@@ -1,0 +1,66 @@
+.form{
+    width: 690px;
+    margin: 0 auto;
+}
+.form .input-area{
+    display: inline-block;
+    margin-top: 20px;
+}
+.form .input-area .input-label{
+    width: 65px;
+    font-size: 16px;
+    display: inline-block;
+}
+.form .input-area .input-con{
+    margin-left: 20px;
+    display: inline-block;
+}
+.form .input{
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 30px;
+    border: 1px solid #E6E6E6;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.form .input-1{
+    width: 120px;
+}
+.form .input-2{
+    width: 150px;
+}
+.form .input-3{
+    width: 180px;
+}
+.form .input-4{
+    width: 200px;
+}
+.form .input-5{
+    width: 240px;
+}
+.form .input-6{
+    width: 600px;
+}
+.form .after-input{
+    margin-left: 25px;
+}
+.form .btns{
+    margin-top: 45px;
+    margin-bottom: 50px;
+}
+.form .btns .btn{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    border: 1px solid #E6E6E6;
+    padding: 0 20px;
+    color: #808080;
+}
+.form .btns >.btn:not(:first-child){
+    margin-left: 100px;
+}
+.form .btns .btn-save{
+    background-color: #3E66DA;
+    color: #ffffff;
+}

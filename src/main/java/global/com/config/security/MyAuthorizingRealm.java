@@ -15,8 +15,10 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm{
-    @Autowired
+import javax.annotation.Resource;
+
+public class MyAuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm{
+    @Resource
     private UserService userService;
 
     /**
@@ -35,7 +37,6 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm{
                 authorizationInfo.addStringPermission(sysPermission.getPermission());
             }
         }
-        System.out.println("x");
         return authorizationInfo;
     }
     /**
@@ -51,6 +52,7 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm{
         if (userInfo==null){
             return null;
         }
+
         SimpleAuthenticationInfo authenticationInfo= new SimpleAuthenticationInfo( userInfo ,userInfo.getPassword(),getName());
         return authenticationInfo;
     }
