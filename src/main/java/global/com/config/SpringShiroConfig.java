@@ -80,7 +80,9 @@ public class SpringShiroConfig {
 	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(org.apache.shiro.mgt.SecurityManager securityManager) {
 		AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
 		advisor.setSecurityManager( securityManager);
+		System.out.println("s");
 		return advisor;
+
 	}
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter() {
