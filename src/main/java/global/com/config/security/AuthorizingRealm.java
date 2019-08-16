@@ -35,6 +35,7 @@ public class AuthorizingRealm extends org.apache.shiro.realm.AuthorizingRealm{
                 authorizationInfo.addStringPermission(sysPermission.getPermission());
             }
         }
+        System.out.println("x");
         return authorizationInfo;
     }
     /**
