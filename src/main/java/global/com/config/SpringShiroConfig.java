@@ -10,9 +10,14 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,6 +88,23 @@ public class SpringShiroConfig {
 		ehCacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
 		return ehCacheManager;
 	}
+
+	@Bean
+	public EhCacheManagerFactoryBean EhCacheManagerFactoryBean() {
+		System.out.println("ShiroConfiguration.getEhCacheManagerFactoryBean()");
+		EhCacheManagerFactoryBean ehCacheManager = new EhCacheManagerFactoryBean();
+		ehCacheManager.setConfigLocation(new ClassPathResource("config/ehcache.xml"));
+		ehCacheManager.setShared(true);//也说是说通过这个来设置cache的基地是这里的Spring独用,还是跟别的(如hibernate的Ehcache共享)
+		return ehCacheManager;
+	}
+	@Bean
+	public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean factoryBean){
+		System.out.println("CacheConfiguration.ehcacheManager()");
+		return new EhCacheCacheManager(factoryBean.getObject());
+
+	}
+
+
 	/**
 	 * cookie保存
 	 */

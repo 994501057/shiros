@@ -2,12 +2,14 @@ package global.com.config;
 
 import global.com.config.security.PermissionInterceptor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.servlet.config.annotation.*;
 @Configuration
+@ComponentScan("com")
 public class SpringWebConfigure implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
