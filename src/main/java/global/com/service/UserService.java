@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 public interface UserService {
     UserInfo findUserByUsername(String username);
-    public User findUserById(String ById) throws Exception;
+    public User findUserById(Long ById) throws Exception;
 
     void save(User user);
 }

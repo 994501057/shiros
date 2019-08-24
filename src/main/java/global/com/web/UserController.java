@@ -53,10 +53,10 @@ public class UserController {
 
     @RequestMapping("/get")
     @ResponseBody
-    public Map<String ,Object> get(@RequestParam("id") String id , Model model){
+    public Map<String ,Object> get(@RequestParam("id") Long id , Model model){
         System.out.println(id);
         Map<String ,Object> map=new HashMap<String ,Object>();
-        User user= null;
+        User user=new User();
         try {
             user = userService.findUserById(id);
         } catch (Exception e) {
@@ -75,13 +75,13 @@ public class UserController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public Map<String ,Object> add(@RequestParam("t_id") String id ,
+    public Map<String ,Object> add(@RequestParam("t_id") Long id ,
                                    @RequestParam("t_name") String username ,
                                    @RequestParam("t_pwd") String pwd ,
                                    @RequestParam("t_email") String email ,Model model){
         System.out.println(id);
         Map<String ,Object> map=new HashMap<String ,Object>();
-        User user= null;
+        User user= new User();
         try {
             user.setId(id);
             user.setUsername(username);

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-    public User findUserById(String ById) ;
+    public User findUserById(Long ById) ;
 
-    void saves(User user);
+
 }

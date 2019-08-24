@@ -31,15 +31,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(String ById) throws Exception {
-       //String userinfo= redisTemplate.opsForValue().get("user:"+ById);
-        /*if (!StringUtils.isEmpty(userinfo)) {
-            User user=    JsonXMLUtils.json2obj(userinfo,User.class);
+    public User findUserById(Long ById) throws Exception {
+       String userinfo= redisTemplate.opsForValue().get("user:"+ById);
+        if (!StringUtils.isEmpty(userinfo)) {
+            User user=  JsonXMLUtils.json2obj(userinfo,User.class);
             System.out.println("从redis中查询到");
-            User cacheInfo = ecacheService.getLocalCache(ById);
-            System.out.println(cacheInfo.toString());
             return user;
-        }*/
+        }
         //如果redis里面不存在，则去查一下ehcache
         User cacheInfo = ecacheService.getLocalCache(ById);
         //System.out.println(cacheInfo.toString());
@@ -49,7 +47,7 @@ public class UserServiceImpl implements UserService {
         }else{//ehcache 也不存在，则就需要查询数据库了
             User dbInfo = userRepository.findUserById(ById);
             if(dbInfo != null){
-               // redisTemplate.opsForValue().set("user:"+ById, JsonXMLUtils.obj2json(dbInfo));
+                redisTemplate.opsForValue().set("user:"+ById, JsonXMLUtils.obj2json(dbInfo));
                 System.out.println("我是从mysql中查出来的: ======= >>>" + ById);
                 ecacheService.saveLocalCache(dbInfo);
                 return dbInfo;
@@ -63,6 +61,6 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         redisTemplate.opsForValue().set("user:"+user.getId(), String.valueOf(user));
         ecacheService.saveLocalCache(user);
-        userRepository.saves(user);
+        userRepository.save(user);
     }
 }

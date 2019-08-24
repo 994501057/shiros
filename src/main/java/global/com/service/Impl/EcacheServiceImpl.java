@@ -25,7 +25,7 @@ public class EcacheServiceImpl implements EcacheService {
      * 从本地缓存获取商品信息
      */
     @Cacheable(value=CACHE_NAME,key=CACHE_KEY+"+#id")
-    public User getLocalCache(String  id) {
+    public User getLocalCache(Long  id) {
         return null;
     }
 
