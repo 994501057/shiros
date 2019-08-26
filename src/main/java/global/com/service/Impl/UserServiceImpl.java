@@ -1,14 +1,12 @@
 package global.com.service.Impl;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import global.com.dao.User;
 import global.com.dao.UserInfo;
-import global.com.dao.UserInfoRepository;
-import global.com.dao.UserRepository;
+import global.com.dao.repository.UserInfoRepository;
+import global.com.dao.repository.UserRepository;
 import global.com.service.EcacheService;
 import global.com.service.UserService;
 import global.com.util.JsonXMLUtils;
-import net.sf.ehcache.util.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

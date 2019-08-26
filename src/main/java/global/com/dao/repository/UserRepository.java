@@ -1,5 +1,6 @@
-package global.com.dao;
+package global.com.dao.repository;
 
+import global.com.dao.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
