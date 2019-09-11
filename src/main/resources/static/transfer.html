@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,8 +8,9 @@
 <body>
 
 
-<a href="list"><h2>继续购物</h2></a><br>
-<a href="toCart"><h2>去购物车查看</h2></a><br>
+<!--<a th:href="@{list}">继hj续购物</a><br>-->
+<a href="list">继续购物</a><br>
+<a href="/toCart">去购物车查看</a><br>
 
 
 </body>

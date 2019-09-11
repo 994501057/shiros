@@ -26,7 +26,7 @@ public class shopCard {
         list.add(new Product(5,"诺基亚200" ,188));
     }
     @RequestMapping("/list")
-    public String setSession(Model model){
+    public String list(Model model){
         model.addAttribute("list",list);
         return "list";
     }
@@ -62,7 +62,7 @@ public class shopCard {
         //当前的跳转是基于template/list.html ，所以需要重定向跳转到中转页面
         return "redirect:transfer.html";
     }
-    @RequestMapping("toCart")
+    @RequestMapping("/toCart")
     public String toCart(){
 
         return "cart";

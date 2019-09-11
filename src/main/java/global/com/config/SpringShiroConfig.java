@@ -84,18 +84,34 @@ public class SpringShiroConfig {
 	@Bean
 	public EhCacheManager ehCacheManager() {
 		System.out.println("ShiroConfiguration.getEhCacheManager()");
+		net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("es");
 		EhCacheManager ehCacheManager = new EhCacheManager();
-		ehCacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
-		return ehCacheManager;
+		if (cacheManager==null){
+			ehCacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
+			return ehCacheManager;
+		}else {
+			ehCacheManager.setCacheManager(cacheManager);
+			return ehCacheManager;
+		}
 	}
 
 	@Bean
 	public EhCacheManagerFactoryBean EhCacheManagerFactoryBean() {
 		System.out.println("ShiroConfiguration.getEhCacheManagerFactoryBean()");
+		//net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("xxx");
 		EhCacheManagerFactoryBean ehCacheManager = new EhCacheManagerFactoryBean();
-		ehCacheManager.setConfigLocation(new ClassPathResource("config/ehcache.xml"));
 		ehCacheManager.setShared(true);//也说是说通过这个来设置cache的基地是这里的Spring独用,还是跟别的(如hibernate的Ehcache共享)
-		return ehCacheManager;
+		/*if (cacheManager==null){
+			ehCacheManager.setConfigLocation(new ClassPathResource("config/ehcache.xml"));
+			return ehCacheManager;
+		}
+		else {
+			ehCacheManager.setCacheManager(cacheManager);*/
+			return ehCacheManager;
+
+
+
+
 	}
 	@Bean
 	public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean factoryBean){

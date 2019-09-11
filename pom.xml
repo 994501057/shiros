@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
+            <scope>true</scope>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -123,6 +123,15 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.8.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,7 +139,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+
+                    <fork>true</fork>
+
+                    <addResources>true</addResources>
+
+                </configuration>
             </plugin>
+
         </plugins>
     </build>
 
