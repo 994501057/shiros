@@ -14,7 +14,8 @@ public class JsonXMLUtils {
         return JSON.parseObject(jsonStr, clazz);
     }
 
-    public static <T> Map<String, Object> json2map(String jsonStr)     throws Exception {
+    @SuppressWarnings("unchecked")
+    public static <T> Map<String, Object> json2map(String jsonStr) throws Exception {
         return JSON.parseObject(jsonStr, Map.class);
     }
 

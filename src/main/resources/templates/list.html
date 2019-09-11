@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8"/>
+    <title>商品列表页面</title>
+</head>
+<body>
+
+<h2>商品列表</h2><br/>
+
+<table>
+
+    <thead>
+    <td width="100px">编号</td>
+    <td width="100px">名称</td>
+    <td width="100px">价格</td>
+    <td width="100px">操作</td>
+    </thead>
+
+    <!--从这里开始就是真正的商品数据显示了
+        p 遍历 list集合的出来的每一个元素对象， 其实好就是商品对象。
+        aa: 表示遍历的状态信息
+            ${aa.index} :遍历的索引
+    -->
+    <tr th:each="p,status:${list}">
+        <td th:text="${p.id}">100</td>
+        <td th:text="${p.name}">苹果笔记本</td>
+        <td th:text="${p.price}">9999</td>
+        <!--<td ><a href="addToCart?index=1">加入购物车</a></td>-->
+        <td ><a th:href="@{addToCart(index=${status.index})}">加入购物车</a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

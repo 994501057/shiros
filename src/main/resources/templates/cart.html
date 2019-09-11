@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<h2>购物车列表</h2>
+
+<table>
+    <thead>
+    <td  width="100px">商品名称</td>
+    <td  width="100px">商品价格</td>
+    <td  width="100px">购买数量</td>
+    <td  width="100px">小计</td>
+    </thead>
+
+    <!--把session里面的购物车拿出来遍历显示。 购物车是一个map集合
+        map集合的遍历出来，其实就是一个key 和 一个value 的组合 。
+        这种组合entry
+        m就是entry
+        map<Product , Integer>
+    -->
+    <tbody>
+    <tr th:each="m:${session.cartMap}">
+        <td th:text="${m.key.name}">联想鼠标垫</td>
+        <td th:text="${m.key.price}">10.0</td>
+        <td th:text="${m.value}">1</td>
+        <td th:text="${m.key.price * m.value}">1</td>
+    </tr>
+
+    </tbody>
+
+
+</table>
+
+</body>
+</html>

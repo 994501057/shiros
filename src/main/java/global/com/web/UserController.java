@@ -7,11 +7,10 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -28,10 +27,11 @@ public class UserController {
      */
     @RequestMapping("/userList")
     @RequiresPermissions("userInfo:view")
-    public String userInfo(){
+    public String userInfo(Model model){
         String username="admin";
         UserInfo userInfo= userService.findUserByUsername(username);
         System.out.println(userInfo.getPassword());
+        model.addAttribute("userInfo",userInfo);
         return "userInfo";
     }
 
@@ -94,5 +94,27 @@ public class UserController {
         model.addAttribute("user",user);
         map.put("x",model);
         return map;
+    }
+    /**
+     *
+     * cookie
+     */
+    @RequestMapping("/setCookies")
+    @ResponseBody
+    public String setCookie(HttpServletResponse response){
+        Cookie cookie=new Cookie("cookieId","helloworld");
+        response.addCookie(cookie);
+        return "SUCCESS";
+
+    }
+    /**
+     * 获得cookie
+     *
+     */
+    @RequestMapping("getCookie")
+    @ResponseBody
+    public String getCookie(@CookieValue String cookieId){
+        System.out.println(cookieId);
+        return "SUCCESS";
     }
 }
