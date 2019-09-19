@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css" >
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
 错误信息：<h4 style="color: red;" th:text="${msg}"></h4>
@@ -10,7 +12,44 @@ index
 <a href="/logout">退出</a>
 
 <h2><a href="/list">开始购物</a></h2>
+<form role="form">
+    <div class="form-group">
+        <label for="dtp_input1" class="col-md-1 control-label">开始时间</label>
+        <div id="startdiv" class="input-group date form_date col-md-3" data-date="2017-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1" data-link-format="yyyy-mm-dd">
+            <input id="start" class="form-control" size="16" type="text" placeholder="请选择开始时间" value="" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+        <input type="hidden" id="dtp_input1" value="" /><br/>
+    </div>
+    <div class="form-group">
+        <label for="dtp_input2" class="col-md-1 control-label">结束时间</label>
+        <div id="endDiv" class="input-group date form_date col-md-3" data-date="2018-11-01" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+            <input id="end" class="form-control" size="16" type="text" placeholder="请选择结束时间" value="" readonly>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+        <input type="hidden" id="dtp_input2" value="" /><br/>
+    </div>
+    <div class="form-group">
+
+        <button class="btn btn-default" type="submit">预测</button>
+
+    </div>
+</form>
 
 </body>
-<script type="text/javascript" src="/static/js/bootstrap-datepicker.min.js"/>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.form_date .form-control').datepicker({
+            format: 'yyyy-mm-dd',
+            minViewMode: 0,
+            autoclose: true
+        })
+
+    })
+</script>
+
 </html>
