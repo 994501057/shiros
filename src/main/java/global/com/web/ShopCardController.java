@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class shopCard {
+public class ShopCardController {
     //准备商品数据
     private static List<Product> list;
     static{
