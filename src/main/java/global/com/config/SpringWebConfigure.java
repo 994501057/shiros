@@ -8,9 +8,30 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
 @Configuration
 @ComponentScan("com")
 public class SpringWebConfigure implements WebMvcConfigurer {
+    /**
+     * 配置JSP视图解析器
+     * 如果没有配置视图解析器。Spring会使用BeanNameViewResolver，通过查找ID与逻辑视图名称匹配且实现了View接口的beans
+     *
+     * @return
+     */
+   /* @Bean
+    public InternalResourceViewResolver setupViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+       // 设置视图路径的前缀
+        resolver.setPrefix("/WEB-INF/view/");
+       //设置视图路径的后缀
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }*/
+    /*@Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/WEB-INF/static/");
+    }*/
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new DateFormatter("yyyy-MM-dd"));
