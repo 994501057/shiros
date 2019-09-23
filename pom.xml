@@ -13,8 +13,10 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>com</name>
     <description>Demo project for Spring Boot</description>
-    <packaging>war</packaging>
-
+    <!--WAR包-->
+    <!--<packaging>war</packaging>-->
+    <!--Jar包-->
+    <packaging>jar</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -209,7 +211,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/text</url>
+                    <url>http://192.168.235.130:8080/manager/text</url>
                     <!-- 配置访问的路径 -->
                     <path>/</path>
                     <!--
