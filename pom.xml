@@ -197,8 +197,8 @@
                 <version>2.2</version>
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
-                    <!-- 配置访问的路径 -->
-                    <path>/</path>
+                    <!-- 配置访问的路径 默认为ROOT -->
+                    <path>/com</path>
                     <!--
                         tomcat-user.xml 中配置的账号密码
                         此处也可以在 maven 中配置 server，然后指定相应的 server 的 id
