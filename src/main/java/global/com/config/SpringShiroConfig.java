@@ -70,7 +70,8 @@ public class SpringShiroConfig {
 		shiroFilterFactoryBean.setUnauthorizedUrl("/login");// 未认证时要跳转的连接
 		shiroFilterFactoryBean.setSuccessUrl("/index");
 		Map<String, String> filterChainDefinitionMap= new HashMap<String, String>();
-		filterChainDefinitionMap.put("/login", "anon");// 登录页面
+		filterChainDefinitionMap.put("/login", "anon");// 匿名登录页面
+		filterChainDefinitionMap.put("/captcha", "anon");// 匿名验证码
 		filterChainDefinitionMap.put("/favicon.ico", "anon");
 		filterChainDefinitionMap.put("/index", "user");
 		filterChainDefinitionMap.put("/", "user");
