@@ -1,6 +1,6 @@
 package global.com.dao.dto;
 
-public class ExportAppluPersonInfo {
+public class ExportApplyPersonInfo {
     private String apply_channel;
     private String marathontype;
     private String phone;
@@ -22,7 +22,7 @@ public class ExportAppluPersonInfo {
     private String idNumber;
     private String lover_idNumber;
 
-    public ExportAppluPersonInfo() {
+    public ExportApplyPersonInfo() {
     }
 
     @Override
