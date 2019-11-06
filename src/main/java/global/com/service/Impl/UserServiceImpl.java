@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Resource
@@ -57,8 +59,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user) {
+
         redisTemplate.opsForValue().set("user:"+user.getId(), String.valueOf(user));
         ecacheService.saveLocalCache(user);
         userRepository.save(user);
+    }
+
+    @Override
+    public void setVerCode(String verKey, String verCode) {
+        redisTemplate.opsForValue().set("verKey:"+verKey, verCode,30, TimeUnit.MINUTES);
+    }
+
+    @Override
+    public boolean getRedis(String verKey, String verCode) {
+        return verCode.equals(redisTemplate.opsForValue().get("verKey:" + verKey));
     }
 }

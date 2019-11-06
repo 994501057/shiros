@@ -10,4 +10,8 @@ public interface UserService {
     public User findUserById(Long ById) throws Exception;
 
     void save(User user);
+
+    void setVerCode(String verKey, String verCode);
+
+    boolean getRedis(String verKey, String verCode);
 }
