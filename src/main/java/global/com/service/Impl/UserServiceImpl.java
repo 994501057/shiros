@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Long ById) throws Exception {
+    public User findUserById(Integer ById) throws Exception {
        String userinfo= redisTemplate.opsForValue().get("user:"+ById);
         if (!StringUtils.isEmpty(userinfo)) {
             User user=  JsonXMLUtils.json2obj(userinfo,User.class);
