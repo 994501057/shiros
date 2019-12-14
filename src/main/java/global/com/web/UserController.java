@@ -3,6 +3,8 @@ package global.com.web;
 import global.com.dao.User;
 import global.com.dao.UserInfo;
 import global.com.service.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,19 +53,23 @@ public class UserController {
         return "userDel";
     }
 
-    @RequestMapping("/get")
+    @ApiOperation(value="查找用户", notes="根据id查找用户")
+    @ApiImplicitParam(name = "id", value = "用户Id", required = true, dataType = "User")
+    @RequestMapping(value="/get",method = RequestMethod.GET)
     @ResponseBody
-    public Map<String ,Object> get(@RequestParam("id") Long id , Model model){
+
+    public Map<String ,Object> get(@RequestParam("id") Integer id){
         System.out.println(id);
         Map<String ,Object> map=new HashMap<String ,Object>();
         User user=new User();
         try {
+            //Long ids= Long.valueOf(id);
             user = userService.findUserById(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        model.addAttribute("user",user);
-        map.put("x",model);
+        //model.addAttribute("user",user);
+        map.put("x",user);
         return map;
     }
     @RequestMapping("/adds")
