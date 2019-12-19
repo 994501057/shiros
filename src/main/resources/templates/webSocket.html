@@ -28,7 +28,15 @@
 <div id="message">
 
 </div>
-
+<div id="mail">
+    <form id="email" action="/mail" method="post" enctype="multipart/form-data">
+        邮件接收人：<input type="text" name="recipient"><br>
+        邮件主题:    <input type="text" name="subject" ><br>
+        邮件内容:   <input type="text"  name="content"><br>
+        文件： <input type="file" name="file" /><br>
+        <input type="submit" name="发送">
+    </form>
+</div>
 
 <script type="text/javascript">
 
