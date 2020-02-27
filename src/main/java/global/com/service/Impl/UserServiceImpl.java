@@ -31,30 +31,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Integer ById) throws Exception {
+    public User findUserById(Long ById) throws Exception {
        String userinfo= redisTemplate.opsForValue().get("user:"+ById);
         if (!StringUtils.isEmpty(userinfo)) {
             User user=  JsonXMLUtils.json2obj(userinfo,User.class);
             System.out.println("从redis中查询到");
             return user;
         }
-        //如果redis里面不存在，则去查一下ehcache
-        User cacheInfo = ecacheService.getLocalCache(ById);
-        //System.out.println(cacheInfo.toString());
-        if(cacheInfo != null){
-            System.out.println("我是从ehcache中查出来的: ======= >>>" + ById);
-            return cacheInfo;
-        }else{//ehcache 也不存在，则就需要查询数据库了
-            User dbInfo = userRepository.findUserById(ById);
-            if(dbInfo != null){
-                redisTemplate.opsForValue().set("user:"+ById, JsonXMLUtils.obj2json(dbInfo));
-                System.out.println("我是从mysql中查出来的: ======= >>>" + ById);
-                ecacheService.saveLocalCache(dbInfo);
-                return dbInfo;
-            }else{
-                return null;
-            }
+        User dbInfos = userRepository.findUserById(ById);
+        if(dbInfos != null){
+            redisTemplate.opsForValue().set("user:"+ById, JsonXMLUtils.obj2json(dbInfos));
+            System.out.println("我是从mysql中查出来的: ======= >>>" + ById);
+           // ecacheService.saveLocalCache(dbInfos);
+            return dbInfos;
+        }else{
+            return null;
         }
+//        //如果redis里面不存在，则去查一下ehcache
+//        User cacheInfo = ecacheService.getLocalCache(ById);
+//        //System.out.println(cacheInfo.toString());
+//        if(cacheInfo != null){
+//            System.out.println("我是从ehcache中查出来的: ======= >>>" + ById);
+//            return cacheInfo;
+//        }else{//ehcache 也不存在，则就需要查询数据库了
+//            User dbInfo = userRepository.findUserById(ById);
+//            if(dbInfo != null){
+//                redisTemplate.opsForValue().set("user:"+ById, JsonXMLUtils.obj2json(dbInfo));
+//                System.out.println("我是从mysql中查出来的: ======= >>>" + ById);
+//                ecacheService.saveLocalCache(dbInfo);
+//                return dbInfo;
+//            }else{
+//                return null;
+//            }
+      //  }
     }
 
     @Override

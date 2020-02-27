@@ -58,7 +58,7 @@ public class UserController {
     @RequestMapping(value="/get",method = RequestMethod.GET)
     @ResponseBody
 
-    public Map<String ,Object> get(@RequestParam("id") Integer id){
+    public Map<String ,Object> get(@RequestParam("id") Long id){
         System.out.println(id);
         Map<String ,Object> map=new HashMap<String ,Object>();
         User user=new User();
