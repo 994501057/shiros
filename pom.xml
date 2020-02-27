@@ -197,7 +197,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
-            <version>1.5.2.RELEASE</version>
+            <!--<version>1.5.2.RELEASE</version>-->
         </dependency>
         <!--接口文档生成-->
         <dependency>

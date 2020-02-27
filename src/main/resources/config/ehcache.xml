@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ehcache name="xxx">
+<ehcache name="local">
 
     <diskStore path="java.io.tmpdir/Tmp_Ehcache"/>
 
