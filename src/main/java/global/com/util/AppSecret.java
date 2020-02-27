@@ -9,5 +9,7 @@ public class AppSecret {
     public static final String WX_LOGIN_SECRET = "e87107f5335dff25073eeacd36d42c16";
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
+    //授权域
+    public static  final  String SCOPE="snsapi_login";
 
 }
