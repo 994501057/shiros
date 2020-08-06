@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @CrossOrigin
 @Controller
 public class WebsocketController {
-    @RequestMapping("/")
+    @RequestMapping("/webSocket")
     public String index(){
         return "webSocket";
     }

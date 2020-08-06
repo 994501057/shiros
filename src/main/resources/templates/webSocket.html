@@ -29,7 +29,7 @@
 
 </div>
 <div id="mail">
-    <form id="email" action="/mail" method="post" enctype="multipart/form-data">
+    <form id="email" action="/com/mail" method="post" enctype="multipart/form-data">
         邮件接收人：<input type="text" name="recipient"><br>
         邮件主题:    <input type="text" name="subject" ><br>
         邮件内容:   <input type="text"  name="content"><br>
@@ -51,7 +51,7 @@
         }
         //判断当前的浏览器是否支持websocket.
         if("WebSocket" in window){
-            websocket = new WebSocket("ws://localhost:8080/websocket/"+nickname);
+            websocket = new WebSocket("ws://47.96.170.253:8080/com/websocket/"+nickname);
         }else{
             alert("Not support websocket");
             return false;
